@@ -25,6 +25,9 @@ resource "aws_eks_node_group" "basic" {
   cluster_name    = aws_eks_cluster.basic.name
   node_group_name = "eks-basic-ng"
   node_role_arn   = aws_iam_role.ng-basic.arn
+
+  instance_types = ["t2.micro"]
+
   subnet_ids      = [
     aws_subnet.private-nat-1.id,
     aws_subnet.private-nat-2.id
