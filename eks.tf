@@ -6,8 +6,8 @@ resource "aws_eks_cluster" "basic" {
 
   vpc_config {
     subnet_ids = [
-      aws_subnet.private-nat-1.id,
-      aws_subnet.private-nat-2.id
+      aws_subnet.public-nat-1.id,
+      aws_subnet.public-nat-2.id
     ]
   }
 
@@ -26,8 +26,8 @@ resource "aws_eks_node_group" "basic" {
   node_group_name = "eks-basic-ng"
   node_role_arn   = aws_iam_role.ng-basic.arn
   subnet_ids      = [
-    aws_subnet.private-nat-1.id,
-    aws_subnet.private-nat-2.id
+    aws_subnet.public-nat-1.id,
+    aws_subnet.public-nat-2.id
   ]
 
   scaling_config {
